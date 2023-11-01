@@ -1,8 +1,12 @@
+import Alert from "./components/Alert";
 import ListGroup from "./components/ListGroup";
 function App() {
+
   return (
     <div>
-      <ListGroup />
+        <Alert>
+          <h1>Hello World</h1>
+        </Alert>
     </div>
   );
 }

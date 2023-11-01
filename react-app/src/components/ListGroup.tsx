@@ -1,7 +1,17 @@
 import { useState } from "react";
 
-function ListGroup() {
-  let items = ["New Delhi", "Bangalore", "Mumbai", "Chennai"];
+
+// We are going to decide the shape of the i/p to this component.
+// We will pass an object with 2 props { items: [], heading: string }
+
+interface Props {
+    items: string[];
+    heading: string;
+
+    onSelectItem: (item: string) => void;
+}
+function ListGroup({ items, heading, onSelectItem }: Props) {
+
   
   // Hooks return arrays 
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -9,7 +19,7 @@ function ListGroup() {
 
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>No items found</p>}
       <ul className="list-group">
         {items.map((item, index) => (
@@ -23,6 +33,7 @@ function ListGroup() {
             key={item}
             onClick={() => {
               setSelectedIndex(index);
+              onSelectItem(item);
             }}
           >
             {item}
